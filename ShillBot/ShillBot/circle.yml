@@ -4,4 +4,4 @@ machine:
 
 test:
     override:
-        - py.test C:\Users\ancie\Documents\SENG 299\Assignment 4\ShillBot\ShillBot\tests
+        -pyunit C:\Users\ancie\Documents\SENG 299\Assignment 4\ShillBot\ShillBot\tests
