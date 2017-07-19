@@ -4,4 +4,4 @@ machine:
 
 test:
     override:
-        -pyunit C:\Users\ancie\Documents\SENG 299\Assignment 4\ShillBot\ShillBot\tests
+        - cd "C:\Users\ancie\Documents\SENG 299\Assignment 4\ShillBot\ShillBot\tests"
