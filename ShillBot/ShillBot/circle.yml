@@ -1,7 +1,0 @@
-machine:
-    python:
-        version: 3.6.0
-
-test:
-    override:
-        - cd home/ubuntu/Athenasko/SENG299A4/Shillbot/Shillbot/tests/
