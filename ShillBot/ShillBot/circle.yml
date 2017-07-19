@@ -4,4 +4,4 @@ machine:
 
 test:
     override:
-        - cd "C:\Users\ancie\Documents\SENG 299\Assignment 4\ShillBot\ShillBot\tests"
+        - cd home/ubuntu/Athenasko/SENG299A4/Shillbot/Shillbot/tests/
