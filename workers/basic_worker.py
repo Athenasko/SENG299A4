@@ -96,7 +96,7 @@ class BasicUserParseWorker(object):
         log.debug('sending data to mother. Original target: %s' % original_target)
 
         address = settings.MOTHERSHIP.get('host', 'localhost')
-        port = settings.MOTHERSHIP.get('port', 9000)
+        port = settings.MOTHERSHIP.get('port', 8080)
 
         addr = (address, port)
 
