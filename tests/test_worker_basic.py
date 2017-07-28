@@ -60,30 +60,45 @@ class TestWorkerBasic(unittest.TestCase):
 
         # self.assertEqual(len_to_crawl_after, len_to_crawl_before)
 
-    def test_worker_link_delay(self):
-    	"""
-    	Purpose: Test to verify link delay does not change.
-    	Expectation: Change the link delay but it should not change
-    	"""
-    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-    	self.assertEqual(worker.link_delay, 0.25)
-    	worker.link_delay = 0.5
-    	self.assertEqual(worker.link_delay, 0.5)
+    # def test_worker_link_delay(self):
+    # 	"""
+    # 	Purpose: Test to verify link delay does not change.
+    # 	Expectation: Change the link delay but it should not change
 
-    def test_worker_adding_links(self):
+    # 	:return:
+    # 	"""
+    # 	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+
+    # 	self.assertEqual(worker.link_delay, 0.25)
+    # 	worker.link_delay = 0.5
+    # 	self.assertEqual(worker.link_delay, 0.5)
+
+    def test_worker_adding_duplicate_links(self):
     	"""
-    	Purpose: Test adding links to the to_crawl list. Working version of the previous test provided by Caleb Shortt.
-    	Expectation: Link is added to to_crawl list and length of list increases. 
+    	Purpose: Test adding duplicate links to the to_crawl list. (Fixed version of above code provided by Caleb Shortt)
+    	Expectation: Link is not added to to_crawl list and length of list remains the same. 
 
     	:return:
     	"""
     	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-    	self.assertEqual(len(worker.to_crawl), 1)
-    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    	self.assertEqual(len(worker.to_crawl), 2)
 
-    #def function():
-    #	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+    	len_before = len(worker.to_crawl)
+    	self.assertEqual(len_before, 1)
+    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    	self.assertEqual(len(worker.to_crawl), len_before)
+
+    def test_worker_adding_new_links(self):
+    	"""
+    	Purpose: Test adding new links to the to_crawl list.
+    	Expectations: New link is added to to_crawl list and length of list increases.
+
+    	:return:
+    	"""
+    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+
+    	len_before = len(worker.to_crawl)
+    	worker.add_links("https://www.reddit.com/user/Groggen2")
+    	self.assertGreater(len(woker.to_crawl), len_before)
 
 
 
