@@ -60,8 +60,30 @@ class TestWorkerBasic(unittest.TestCase):
 
         # self.assertEqual(len_to_crawl_after, len_to_crawl_before)
 
+    # def test_worker_link_delay(self):
+    # 	"""
+    # 	Purpose: Test to verify link delay does not change.
+    # 	Expectation: Change the link delay but it should not change
+    # 	"""
+    # 	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
 
+    # 	worker.link_delay = 0.5
+    # 	self.assertEqual(worker.link_delay, 0.5)
 
+    def test_worker_adding_links(self):
+    	"""
+    	Purpose: Test adding links to the to_crawl list.
+    	Expectation: Link is added to to_crawl list and length of list increases. 
+
+    	:return:
+    	"""
+    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+
+    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    	self.assertGreater(len(worker.to_crawl), 0)
+
+    #def function():
+    #	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
 
 
 
