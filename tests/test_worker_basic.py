@@ -78,9 +78,9 @@ class TestWorkerBasic(unittest.TestCase):
     	:return:
     	"""
     	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-
+    	self.assertEqual(len(worker.to_crawl), 0)
     	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    	self.assertGreater(len(worker.to_crawl), 0)
+    	self.assertEqual(len(worker.to_crawl), 1)
 
     #def function():
     #	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
