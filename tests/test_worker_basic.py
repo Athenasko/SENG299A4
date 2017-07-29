@@ -82,7 +82,7 @@ class TestWorkerBasic(unittest.TestCase):
     	worker.run
     	duplicate = "https://www.reddit.com/user/Chrikelnel"
     	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    	if duplicate is in worker.to_crawl:
+    	if duplicate not in worker.to_crawl:
     		self.assertTrue(True)
 
     def test_worker_adding_new_links(self):
