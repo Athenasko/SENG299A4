@@ -70,21 +70,21 @@ class TestWorkerBasic(unittest.TestCase):
     	worker = BasicUserParseWorker("https://www.reddit.com /user/Chrikelnel")
     	self.assertRaises(WorkerException, worker.run)
 
-    # def test_worker_adding_duplicate_links(self):
-    # 	"""
-    # 	Purpose: Test adding duplicate links to the to_crawl list. (Fixed version of above code provided by Caleb Shortt)
-    # 	Expectation: Link is not added to to_crawl list and length of list remains the same. 
+    def test_worker_adding_duplicate_links(self):
+    	"""
+    	Purpose: Test adding duplicate links to the to_crawl list. (Fixed version of above code provided by Caleb Shortt)
+    	Expectation: Link is not added to to_crawl list and length of list remains the same. 
 
-    # 	:return:
-    # 	"""
-    # 	worker = None
-    # 	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+    	:return:
+    	"""
+    	worker = None
+    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
 
-    # 	len_before = len(worker.to_crawl)
-    # 	#self.assertEqual(len_before, 1)
-    # 	worker.run
-    # 	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    # 	self.assertEqual(len(worker.to_crawl), len_before)
+    	len_before = len(worker.to_crawl)
+    	#self.assertEqual(len_before, 1)
+    	worker.run
+    	#worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    	self.assertEqual(len(worker.to_crawl), len_before)
 
     def test_worker_adding_new_links(self):
     	"""
