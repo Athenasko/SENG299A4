@@ -77,7 +77,7 @@ class TestWorkerBasic(unittest.TestCase):
 
     	:return:
     	"""
-    	worker1 = BasicUserParseWorker("")
+    	worker1 = None
     	worker2 = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
 
     	len_before = len(worker1.to_crawl)
