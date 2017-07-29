@@ -3,7 +3,7 @@ import unittest
 import codecs
 import os
 
-from workers.basic_worker import BasicUserParseWorker
+from workers.basic_worker import BasicUserParseWorker, WorkerException
 
 
 class TestWorkerBasic(unittest.TestCase):
@@ -60,34 +60,31 @@ class TestWorkerBasic(unittest.TestCase):
 
         # self.assertEqual(len_to_crawl_after, len_to_crawl_before)
 
-    # def test_worker_link_delay(self):
-    # 	"""
-    # 	Purpose: Test to verify link delay does not change.
-    # 	Expectation: Change the link delay but it should not change
-
-    # 	:return:
-    # 	"""
-    # 	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
-
-    # 	self.assertEqual(worker.link_delay, 0.25)
-    # 	worker.link_delay = 0.5
-    # 	self.assertEqual(worker.link_delay, 0.5)
-
-    def test_worker_adding_duplicate_links(self):
+    def test_worker_improper_link(self):
     	"""
-    	Purpose: Test adding duplicate links to the to_crawl list. (Fixed version of above code provided by Caleb Shortt)
-    	Expectation: Link is not added to to_crawl list and length of list remains the same. 
+    	Purpose: Test that improper links raise exception.
+    	Expectation: Startup system, fail to hit reddit user, raise exception.
 
     	:return:
     	"""
-    	worker = None
-    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+    	worker = BasicUserParseWorker("https://www.reddit.com /user/Chrikelnel")
+    	self.assertRaises(WorkerException, worker.run)
 
-    	len_before = len(worker.to_crawl)
-    	#self.assertEqual(len_before, 1)
-    	worker.run
-    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    	self.assertEqual(len(worker.to_crawl), len_before)
+    # def test_worker_adding_duplicate_links(self):
+    # 	"""
+    # 	Purpose: Test adding duplicate links to the to_crawl list. (Fixed version of above code provided by Caleb Shortt)
+    # 	Expectation: Link is not added to to_crawl list and length of list remains the same. 
+
+    # 	:return:
+    # 	"""
+    # 	worker = None
+    # 	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+
+    # 	len_before = len(worker.to_crawl)
+    # 	#self.assertEqual(len_before, 1)
+    # 	worker.run
+    # 	worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    # 	self.assertEqual(len(worker.to_crawl), len_before)
 
     def test_worker_adding_new_links(self):
     	"""
