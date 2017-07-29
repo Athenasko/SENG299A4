@@ -98,7 +98,15 @@ class TestWorkerBasic(unittest.TestCase):
     	worker.add_links("https://www.reddit.com/user/Groggen2")
     	self.assertGreater(len(worker.to_crawl), len_before)
 
-
+    def test_worker_link_delay(self):
+    	"""
+    	Purpose: Basic unit test testing link delay.
+    	Expectations: Should be the same as initialized.
+		
+		:return:
+		"""
+		worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+		self.assertEqual(worker.link_delay, 0.25)
 
 
 
