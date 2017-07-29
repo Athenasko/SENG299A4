@@ -77,15 +77,15 @@ class TestWorkerBasic(unittest.TestCase):
 
     	:return:
     	"""
-    	worker = None
-    	worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+    	worker1 = BasicUserParseWorker()
+    	worker2 = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
 
-    	len_before = len(worker.to_crawl)
-    	#self.assertEqual(len_before, 1)
-    	worker.run
-    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
-    	print(len(worker.crawled))
-    	self.assertEqual(len(worker.to_crawl), len_before)
+    	len_before = len(worker1.to_crawl)
+    	self.assertEqual(len_before, 1)
+    	#worker.run
+    	#worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    	#print(len(worker.crawled))
+    	#self.assertEqual(len(worker.to_crawl), len_before)
 
     def test_worker_adding_new_links(self):
     	"""
