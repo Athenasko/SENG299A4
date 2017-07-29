@@ -81,7 +81,7 @@ class TestWorkerBasic(unittest.TestCase):
 
     	worker.run
     	len_before = len(worker.to_crawl)
-    	worker.add_links("https://www.reddit.com/user/Chrikelnel")
+    	worker.add_links("https://www.reddit.com/user/Groggen2")
     	self.assertEqual(len(worker.to_crawl), len_before)
 
     def test_worker_adding_new_links(self):
